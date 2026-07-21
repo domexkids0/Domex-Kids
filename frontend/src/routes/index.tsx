@@ -10,6 +10,40 @@ import heroImg from "../assets/hero.jpg";
 import facilityImg from "../assets/facility.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: async ({ context }) => {
+    await Promise.all([
+      context.queryClient.prefetchQuery({
+        queryKey: ["strapi", "categories", "home"],
+        queryFn: async () => {
+          const res = await fetch(
+            `${import.meta.env.VITE_STRAPI_URL || "https://domex-kids-strapi.onrender.com"}/api/categories?filters[showOnHomepage][$eq]=true&populate=image`,
+          );
+          return res.json();
+        },
+        staleTime: 5 * 60 * 1000,
+      }),
+      context.queryClient.prefetchQuery({
+        queryKey: ["strapi", "products", "home"],
+        queryFn: async () => {
+          const res = await fetch(
+            `${import.meta.env.VITE_STRAPI_URL || "https://domex-kids-strapi.onrender.com"}/api/products?filters[showOnHomepage][$eq]=true&populate=category,photos`,
+          );
+          return res.json();
+        },
+        staleTime: 5 * 60 * 1000,
+      }),
+      context.queryClient.prefetchQuery({
+        queryKey: ["strapi", "videos"],
+        queryFn: async () => {
+          const res = await fetch(
+            `${import.meta.env.VITE_STRAPI_URL || "https://domex-kids-strapi.onrender.com"}/api/videos`,
+          );
+          return res.json();
+        },
+        staleTime: 5 * 60 * 1000,
+      }),
+    ]);
+  },
   head: () => ({
     meta: [
       { title: "DOMEX KIDS — Premium Wholesale Kids Wear Manufacturer" },

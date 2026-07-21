@@ -12,6 +12,27 @@ export const Route = createFileRoute("/products")({
   validateSearch: (search: Record<string, unknown>) => ({
     category: Number(search.category) || 0,
   }),
+  loader: async ({ context }) => {
+    const base = import.meta.env.VITE_STRAPI_URL || "https://domex-kids-strapi.onrender.com";
+    await Promise.all([
+      context.queryClient.prefetchQuery({
+        queryKey: ["strapi", "categories"],
+        queryFn: async () => {
+          const res = await fetch(`${base}/api/categories?populate=image`);
+          return res.json();
+        },
+        staleTime: 5 * 60 * 1000,
+      }),
+      context.queryClient.prefetchQuery({
+        queryKey: ["strapi", "products"],
+        queryFn: async () => {
+          const res = await fetch(`${base}/api/products?populate=category,photos`);
+          return res.json();
+        },
+        staleTime: 5 * 60 * 1000,
+      }),
+    ]);
+  },
   head: () => ({
     meta: [
       { title: "Products — DOMEX KIDS Wholesale Kids Wear" },
