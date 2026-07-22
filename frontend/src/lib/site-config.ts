@@ -15,7 +15,7 @@ export const site = {
   email: "creativebusinesstalk@gmail.com",
   hours: "Tuesday – Sunday · 9:00 AM – 6:00 PM (Monday Closed)",
   social: {
-    instagram: "https://instagram.com/",
+    instagram: "https://www.instagram.com/vyaapar_motivation/",
     youtube: "https://www.youtube.com/@DomexKids/featured",
   },
   // REPLACE: Google Maps embed URL (centered on Gandhi Nagar, Delhi)
