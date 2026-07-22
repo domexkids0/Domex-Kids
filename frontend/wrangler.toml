@@ -2,7 +2,3 @@ name = "domex-kids"
 compatibility_date = "2025-07-22"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "dist"
-
-[vars]
-NODE_VERSION = "22"
-VITE_STRAPI_URL = "https://admin.domexkids.com"
