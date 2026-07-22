@@ -27,7 +27,7 @@ export type StrapiProduct = {
   description: string | null;
   showOnHomepage: boolean;
   price: number | null;
-  category: StrapiCategory | null;
+  category: StrapiCategory | string | null;
   photos: StrapiMedia[];
   createdAt: string;
   updatedAt: string;

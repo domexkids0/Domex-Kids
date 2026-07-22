@@ -36,12 +36,13 @@ function extractYouTubeId(url: string): string {
 
 export function mapProduct(sp: StrapiProduct): Product {
   const images = sp.photos?.length > 0 ? sp.photos.map((m) => mediaUrl(m)) : [];
+  const cat = typeof sp.category === "string" ? null : sp.category;
   return {
     id: sp.id,
     name: sp.title,
-    categoryId: sp.category?.id ?? 0,
-    categoryName: sp.category?.title ?? "",
-    categoryDocumentId: sp.category?.documentId ?? "",
+    categoryId: cat?.id ?? 0,
+    categoryName: cat?.title ?? "",
+    categoryDocumentId: cat?.documentId ?? (typeof sp.category === "string" ? sp.category : ""),
     tagline: sp.tagline ?? "",
     subText: sp.subText ?? "",
     price: sp.price ?? null,
@@ -78,13 +79,15 @@ export async function fetchHomeCategories(): Promise<Category[]> {
 
 export async function fetchHomeProducts(): Promise<Product[]> {
   const res = await fetchStrapi<{ data: StrapiProduct[] }>(
-    "/products?filters[showOnHomepage][$eq]=true&populate=category,photos",
+    "/products?filters[showOnHomepage][$eq]=true&populate[0]=category&populate[1]=photos",
   );
   return res.data.map(mapProduct);
 }
 
 export async function fetchAllProducts(): Promise<Product[]> {
-  const res = await fetchStrapi<{ data: StrapiProduct[] }>("/products?populate=category,photos");
+  const res = await fetchStrapi<{ data: StrapiProduct[] }>(
+    "/products?populate[0]=category&populate[1]=photos",
+  );
   return res.data.map(mapProduct);
 }
 
