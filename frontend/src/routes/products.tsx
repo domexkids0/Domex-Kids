@@ -99,12 +99,12 @@ function Products() {
           ) : (
             filtered.map((p, i) => (
               <Reveal key={p.id} delay={i * 100}>
-                <article className="hover-lift rounded-3xl overflow-hidden bg-white border border-border">
-                  <div className="zoom-img aspect-[5/4]">
+                <article className="hover-lift group rounded-3xl overflow-hidden bg-white border border-border">
+                  <div className="aspect-[4/5] overflow-hidden rounded-xl bg-secondary">
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-full h-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
