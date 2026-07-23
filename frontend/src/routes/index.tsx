@@ -6,7 +6,7 @@ import { images, site } from "@/lib/site-config";
 import { fetchHomeCategories, fetchHomeProducts, fetchVideos } from "@/lib/strapi";
 import type { Product, Category, Video } from "@/lib/strapi-types";
 
-import heroImg from "../assets/hero.jpg";
+import heroImg from "../assets/hero-new.jpg";
 import facilityImg from "../assets/facility.jpg";
 
 export const Route = createFileRoute("/")({
