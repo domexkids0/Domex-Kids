@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { X } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -44,6 +44,7 @@ function Products() {
   const { category } = Route.useSearch();
   const { cats, allProducts } = Route.useLoaderData();
   const navigate = useNavigate();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const filtered = !category
@@ -72,11 +73,14 @@ function Products() {
         <div className="container-x">
           <Reveal>
             <div className="rounded-xl bg-muted">
-              <div className="flex items-center gap-1.5 p-1.5 overflow-x-auto flex-nowrap scrollbar-hide">
+              <div ref={scrollRef} className="flex items-center gap-1.5 p-1.5 overflow-x-auto flex-nowrap scrollbar-hide">
                 {[{ documentId: "", name: "All" }, ...cats].map((c) => (
                   <button
                     key={c.documentId}
-                    onClick={() => navigate({ to: "/products", search: { category: c.documentId }, resetScroll: false })}
+                    onClick={(e) => {
+                      navigate({ to: "/products", search: { category: c.documentId }, resetScroll: false });
+                      e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+                    }}
                     className={`rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 shrink-0 ${
                       category === c.documentId
                         ? "bg-background text-foreground shadow"
