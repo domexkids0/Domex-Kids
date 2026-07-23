@@ -291,11 +291,13 @@ function Home() {
 
       {/* Products / Collection */}
       <section className="container-x mx-auto max-w-7xl pb-24 lg:pb-32">
-        <div className="reveal mx-auto mb-14 max-w-2xl text-center">
-          <div className="text-xs tracking-[0.3em] text-brand uppercase">The Collection</div>
-          <h2 className="mt-3 font-serif text-4xl leading-tight md:text-5xl">
-            Fashion built for every age.
-          </h2>
+        <div className="reveal mb-14 flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-2xl">
+            <div className="text-xs tracking-[0.3em] text-brand uppercase">The Collection</div>
+            <h2 className="mt-3 font-serif text-3xl leading-tight md:text-5xl">
+              Fashion built for every age.
+            </h2>
+          </div>
         </div>
         <div className="grid grid-cols-3 gap-4 md:gap-6">
           {homeCategories.map((cat, i) => (
