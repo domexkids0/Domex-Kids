@@ -67,11 +67,11 @@ export function Navbar() {
         }`}
       >
         <div
-          className="absolute inset-0 bg-foreground/20 backdrop-blur-sm"
+          className="absolute inset-0 bg-white"
           onClick={() => setOpen(false)}
         />
         <aside
-          className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-background p-8 shadow-2xl transition-transform duration-500 ${
+          className={`absolute inset-0 h-full w-full bg-white p-8 transition-transform duration-500 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >

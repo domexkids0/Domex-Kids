@@ -191,7 +191,7 @@ function Home() {
                 <div className="font-serif text-xl text-foreground md:text-5xl">
                   <Counter to={s.n} suffix={s.suffix} />
                 </div>
-                <div className="mt-2 text-xs tracking-[0.2em] text-muted-foreground uppercase">
+                <div className="mt-2 text-[0.6rem] tracking-[0.15em] text-muted-foreground uppercase md:text-xs md:tracking-[0.2em]">
                   {s.label}
                 </div>
               </div>
@@ -479,7 +479,7 @@ function Home() {
               </div>
             ))}
           </div>
-            <div className="reveal rounded-3xl border border-border bg-white p-8 md:p-10">
+            <div className="reveal hidden rounded-3xl border border-border bg-white p-8 md:p-10 lg:block">
               <div className="text-xs tracking-[0.25em] text-brand uppercase">Business Process</div>
               <h3 className="mt-2 font-serif text-3xl">How an order flows</h3>
               <ol className="mt-8 space-y-5">
