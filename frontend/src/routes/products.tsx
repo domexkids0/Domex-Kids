@@ -71,7 +71,7 @@ function Products() {
       <section className="mt-16 md:mt-10">
         <div className="container-x">
           <Reveal>
-            <div className="inline-flex items-center gap-1.5 rounded-xl bg-muted p-1.5">
+            <div className="inline-flex items-center gap-1.5 rounded-xl bg-muted p-1.5 overflow-x-auto md:overflow-visible flex-nowrap">
               {[{ documentId: "", name: "All" }, ...cats].map((c) => (
                 <button
                   key={c.documentId}

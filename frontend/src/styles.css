@@ -1,4 +1,8 @@
 @import "tailwindcss" source(none);
+
+html, body {
+  overflow-x: hidden;
+}
 @source "../src";
 @import "tw-animate-css";
 
