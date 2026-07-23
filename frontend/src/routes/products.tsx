@@ -91,7 +91,7 @@ function Products() {
       </section>
 
       <section className="mt-10 md:mt-14">
-        <div className="container-x grid grid-cols-3 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="container-x grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
           {filtered.length === 0 ? (
             <Reveal>
               <p className="text-muted-foreground col-span-full">No products in this category yet.</p>
